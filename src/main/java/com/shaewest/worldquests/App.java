@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.shaewest.worldquests.Commands.WorldQuest.WorldQuest;
@@ -17,7 +18,11 @@ public class App extends JavaPlugin {
         this.getCommand("worldquest").setExecutor(new WorldQuest()); 
 
         //How to setup tasks
-        new StatisticTask().runTaskTimer(this, 0, 18000);
+        FileConfiguration config = getConfig();
+
+        int minutes = config.getInt("minutesPerCheck");
+
+        new StatisticTask().runTaskTimer(this, 0, 20 * 60 * minutes);
     }
 
     public void loadConfig() {
@@ -30,6 +35,7 @@ public class App extends JavaPlugin {
             stoneDirtList.add("DIRT");
             List<String> stoneList = new ArrayList<>();
             stoneList.add("STONE");
+            getConfig().addDefault("minutesPerCheck", 15);
             getConfig().addDefault("exampleQuest.questDescription", "Complete mining 10000 dirt blocks and stone blocks");
             getConfig().addDefault("exampleQuest.priceDescription", "$100000");
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.types", stoneDirtList);
@@ -47,6 +53,7 @@ public class App extends JavaPlugin {
             getConfig().addDefault("exampleQuest.forTowns", false);
             getConfig().addDefault("exampleQuest.forIndividuals", false);
             getConfig().addDefault("exampleQuest.commandToRun", "/eco give {player} 100000");
+            getConfig().addDefault("exampleQuest.singleRunCommand", false);
             getConfig().addDefault("exampleQuest.active", false);
             getConfig().addDefault("exampleQuest.completed", false);
         }
