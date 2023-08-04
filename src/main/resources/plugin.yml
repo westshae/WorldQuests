@@ -1,8 +1,8 @@
-main: com.altoya.pluginname.App
-name: pluginname
-version: 0
-api-version: 1.19.4
-description: BLANK DESCRIPTION
+main: com.shaewest.worldquests.App
+name: worldquests
+version: 1
+api-version: 1.20
+description: Plugin that enabled you to record world, towny nation, towny towns and individual players.
 
 commands:
   commandName:
