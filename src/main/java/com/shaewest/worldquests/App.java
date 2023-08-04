@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.shaewest.worldquests.Commands.WorldQuest.WorldQuest;
 import com.shaewest.worldquests.Tasks.StatisticTask;
 public class App extends JavaPlugin {
     @Override
@@ -12,7 +13,7 @@ public class App extends JavaPlugin {
         loadConfig();//Loads .yml
 
         //How to register commands
-        //this.getCommand("commandNameInYml").setExecutor(new ObjectWithOnCommandMethod()); 
+        this.getCommand("commandNameInYml").setExecutor(new WorldQuest()); 
 
         //How to register eventListeners
         //this.getServer().getPluginManager().registerEvents(new ObjectWith@EventHandlers(), this);
