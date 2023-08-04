@@ -12,6 +12,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import com.shaewest.worldquests.Extra.Players;
 import com.shaewest.worldquests.Util.Messages;
 
 import net.md_5.bungee.api.ChatColor;
@@ -55,6 +56,8 @@ public class WorldQuest implements CommandExecutor {
   private void handleQuest(Player player, String questName) {
     FileConfiguration config = Bukkit.getServer().getPluginManager().getPlugin("worldquests").getConfig();
     ConfigurationSection questSection = config.getConfigurationSection("" + questName);
+
+    Bukkit.broadcastMessage("" + Players.getAllOfflinePlayers().size());
 
     String questDescription = questSection.getString("questDescription");
     String priceDescription = questSection.getString("priceDescription");
