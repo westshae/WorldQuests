@@ -2,6 +2,7 @@ package com.shaewest.worldquests;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,26 +25,30 @@ public class App extends JavaPlugin {
         File configFile = new File(getDataFolder(), "config.yml");
 
         if(!configFile.exists()){
-            ArrayList<String> stoneDirtList = new ArrayList<>();
+            List<String> stoneDirtList = new ArrayList<>();
             stoneDirtList.add("GRASS");
             stoneDirtList.add("DIRT");
-            ArrayList<String> stoneList = new ArrayList<>();
+            List<String> stoneList = new ArrayList<>();
             stoneList.add("STONE");
             getConfig().addDefault("exampleQuest.questDescription", "Complete mining 10000 dirt blocks and stone blocks");
             getConfig().addDefault("exampleQuest.priceDescription", "$100000");
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.types", stoneDirtList);
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.enum", "MINE_BLOCK");
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.goal", 10000);
+            getConfig().addDefault("exampleQuest.statistics.mine_dirt.progress", 0);
+            getConfig().addDefault("exampleQuest.statistics.mine_dirt.description", "Mine dirt and grass blocks");
             getConfig().addDefault("exampleQuest.statistics.mine_stone.types", stoneList);
             getConfig().addDefault("exampleQuest.statistics.mine_stone.enum", "MINE_BLOCK");
             getConfig().addDefault("exampleQuest.statistics.mine_stone.goal", 10000);
+            getConfig().addDefault("exampleQuest.statistics.mine_stone.progress", 0);
+            getConfig().addDefault("exampleQuest.statistics.mine_stone.description", "Mine stone");
             getConfig().addDefault("exampleQuest.forWorld", true);
             getConfig().addDefault("exampleQuest.forNations", false);
             getConfig().addDefault("exampleQuest.forTowns", false);
             getConfig().addDefault("exampleQuest.forIndividuals", false);
             getConfig().addDefault("exampleQuest.commandToRun", "/eco give {player} 100000");
-            getConfig().addDefault("exampleQuest.active", "false");
-
+            getConfig().addDefault("exampleQuest.active", false);
+            getConfig().addDefault("exampleQuest.completed", false);
         }
 
         //Load config
