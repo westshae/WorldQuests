@@ -13,10 +13,7 @@ public class App extends JavaPlugin {
         loadConfig();//Loads .yml
 
         //How to register commands
-        this.getCommand("commandNameInYml").setExecutor(new WorldQuest()); 
-
-        //How to register eventListeners
-        //this.getServer().getPluginManager().registerEvents(new ObjectWith@EventHandlers(), this);
+        this.getCommand("worldquest").setExecutor(new WorldQuest()); 
 
         //How to setup tasks
         new StatisticTask().runTaskTimer(this, 0, 18000);
@@ -31,15 +28,15 @@ public class App extends JavaPlugin {
             stoneDirtList.add("GRASS");
             stoneDirtList.add("DIRT");
             ArrayList<String> stoneList = new ArrayList<>();
-            stoneDirtList.add("STONE");
+            stoneList.add("STONE");
             getConfig().addDefault("exampleQuest.questDescription", "Complete mining 10000 dirt blocks and stone blocks");
             getConfig().addDefault("exampleQuest.priceDescription", "$100000");
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.types", stoneDirtList);
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.enum", "MINE_BLOCK");
             getConfig().addDefault("exampleQuest.statistics.mine_dirt.goal", 10000);
-            getConfig().addDefault("exampleQuest.statistics.mine_dirt.types", stoneList);
-            getConfig().addDefault("exampleQuest.statistics.mine_dirt.enum", "MINE_BLOCK");
-            getConfig().addDefault("exampleQuest.statistics.mine_dirt.goal", 10000);
+            getConfig().addDefault("exampleQuest.statistics.mine_stone.types", stoneList);
+            getConfig().addDefault("exampleQuest.statistics.mine_stone.enum", "MINE_BLOCK");
+            getConfig().addDefault("exampleQuest.statistics.mine_stone.goal", 10000);
             getConfig().addDefault("exampleQuest.forWorld", true);
             getConfig().addDefault("exampleQuest.forNations", false);
             getConfig().addDefault("exampleQuest.forTowns", false);
