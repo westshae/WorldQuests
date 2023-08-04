@@ -12,7 +12,7 @@ import com.shaewest.worldquests.Tasks.StatisticTask;
 public class App extends JavaPlugin {
     @Override
     public void onEnable() {
-        loadConfig();//Loads .yml
+        loadConfig();
 
         //How to register commands
         this.getCommand("worldquest").setExecutor(new WorldQuest()); 
